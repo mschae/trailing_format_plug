@@ -8,9 +8,9 @@ defmodule TrailingFormatPlug.Mixfile do
       elixir: "~> 1.0.0",
       deps: deps,
       package: [
-        contributors: "Michael Schaefermeyer",
+        contributors: ["Michael Schaefermeyer"],
         licenses: ["MIT"],
-        links: [github: "http://github.com/mschae/trailing_format_plug"]
+        links: %{"Github" => "http://github.com/mschae/trailing_format_plug"}
       ],
       description: description
      ]
