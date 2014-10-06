@@ -1,5 +1,6 @@
 TrailingFormatPlug
 ==================
+{<img src="https://travis-ci.org/mschae/trailing_format_plug.svg" alt="Build Status" />}[https://travis-ci.org/mschae/trailing_format_plug]
 
 ## Usage
 
