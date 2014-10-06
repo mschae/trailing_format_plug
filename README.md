@@ -24,6 +24,7 @@ defmodule Djay.Router do
 
   pipeline :before do
     plug TrailingFormatPlug
-    super
+    plug :super
   end
+end
 ```
