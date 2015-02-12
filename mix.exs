@@ -4,7 +4,7 @@ defmodule TrailingFormatPlug.Mixfile do
   def project do
     [
       app: :trailing_format_plug,
-      version: "0.0.1",
+      version: "0.0.2",
       elixir: "~> 1.0.0",
       deps: deps,
       package: [
