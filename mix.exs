@@ -5,7 +5,7 @@ defmodule TrailingFormatPlug.Mixfile do
     [
       app: :trailing_format_plug,
       version: "0.0.2",
-      elixir: "~> 1.0.0",
+      elixir: ">= 1.0.0",
       deps: deps,
       package: [
         contributors: ["Michael Schaefermeyer"],
