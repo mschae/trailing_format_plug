@@ -2,7 +2,7 @@
 
 An elixir plug to support legacy APIs that use a rails-like trailing format e.g. http://api.dev/resources.json
 
-### Installation
+## Installation
 
 Add the `trailing_format_plug` dependency to your `mix.exs` as follows:
 
@@ -14,7 +14,7 @@ def deps do
 end
 ```
 
-### Usage
+## Usage
 
 If you are using phoenix:
 
