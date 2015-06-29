@@ -9,9 +9,9 @@ defmodule TrailingFormatPlug do
       [ format | fragments ] ->
         new_path       = fragments |> Enum.reverse |> Enum.join(".")
         path_fragments = List.replace_at conn.path_info, -1, new_path
-        params         = Plug.Conn.fetch_params(conn).params
+        params         = Plug.Conn.fetch_query_params(conn).params
                          |> Dict.put("format", format)
-        %{conn | path_info: path_fragments, params: params}
+        %{conn | path_info: path_fragments, query_params: params, params: params}
     end
   end
 end
