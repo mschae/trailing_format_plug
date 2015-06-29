@@ -21,8 +21,9 @@ defmodule TrailingFormatPlugTest do
   end
 
   test "plug adds format to conn.params" do
-    conn = conn(:get, "/foo/bar.json")
-           |> Plug.Conn.fetch_params
+    conn =
+      conn(:get, "/foo/bar.json")
+      |> Plug.Conn.fetch_query_params
 
     conn = TrailingFormatPlug.call(conn, @opts)
 
