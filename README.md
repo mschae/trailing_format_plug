@@ -1,30 +1,30 @@
-TrailingFormatPlug
-==================
-[![Build Status](https://travis-ci.org/mschae/trailing_format_plug.svg?branch=master)](https://travis-ci.org/mschae/trailing_format_plug)
+# TrailingFormatPlug [![Build Status](https://travis-ci.org/mschae/trailing_format_plug.svg?branch=master)](https://travis-ci.org/mschae/trailing_format_plug)
 
-## Usage
+An elixir plug to support legacy APIs that use a rails-like trailing format e.g. http://api.dev/resources.json
+
+## Installation
 
 Add the `trailing_format_plug` dependency to your `mix.exs` as follows:
 
 ```elixir
 def deps do
   #  ...
-  {:trailing_format_plug, "~> 0.0.1"}
+  {:trailing_format_plug, "~> 0.0.2"}
   # ...
 end
 ```
 
+## Usage
+
 If you are using phoenix:
 
-Add the plug to the `:before` pipeline in your router.ex:
+Add the plug before the router to your ```endpoint.ex```
 
 ```elixir
-defmodule Djay.Router do
-  use Phoenix.Router
+# ...
+  plug TrailingFormatPlug
 
-  pipeline :before do
-    plug TrailingFormatPlug
-    plug :super
-  end
+  plug :router, InfiltraderApi.Router
 end
+
 ```
