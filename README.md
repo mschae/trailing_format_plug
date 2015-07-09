@@ -9,7 +9,7 @@ Add the `trailing_format_plug` dependency to your `mix.exs` as follows:
 ```elixir
 def deps do
   #  ...
-  {:trailing_format_plug, "~> 0.0.3"}
+  {:trailing_format_plug, "~> 0.0.4"}
   # ...
 end
 ```
