@@ -9,7 +9,7 @@ defmodule TrailingFormatPlug.Mixfile do
       deps: deps,
       package: [
         contributors: ["Michael Schaefermeyer"],
-        licenses: ["MIT"],
+        licenses: ["Apache 2.0"],
         links: %{"Github" => "http://github.com/mschae/trailing_format_plug"}
       ],
       description: description
