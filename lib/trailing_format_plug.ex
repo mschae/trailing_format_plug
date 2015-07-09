@@ -3,7 +3,7 @@ defmodule TrailingFormatPlug do
 
   def init(options), do: options
 
-  def call(conn, opts) do
+  def call(conn, _opts) do
     conn.path_info |> List.last |> String.split(".") |> Enum.reverse |> case do
       [ _ ] -> conn
       [ format | fragments ] ->
