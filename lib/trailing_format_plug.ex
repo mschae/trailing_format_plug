@@ -4,7 +4,14 @@ defmodule TrailingFormatPlug do
   def init(options), do: options
 
   def call(conn, _opts) do
-    conn.path_info |> List.last |> String.split(".") |> Enum.reverse |> case do
+    case conn.path_info |> List.last do
+      nil -> conn
+      segment -> trim(conn, segment)
+    end
+  end
+
+  defp trim(conn, segment) do
+    case segment |> String.split(".") |> Enum.reverse do
       [ _ ] -> conn
       [ format | fragments ] ->
         new_path       = fragments |> Enum.reverse |> Enum.join(".")
