@@ -27,6 +27,6 @@ defmodule TrailingFormatPlugTest do
 
     conn = TrailingFormatPlug.call(conn, @opts)
 
-    assert conn.params["format"] == "json"
+    assert conn.params["_format"] == "json"
   end
 end
