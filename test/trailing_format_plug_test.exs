@@ -27,6 +27,17 @@ defmodule TrailingFormatPlugTest do
 
     conn = TrailingFormatPlug.call(conn, @opts)
 
-    assert conn.params["format"] == "json"
+    assert conn.params["_format"] == "json"
+  end
+
+  test "plug supports empty path_info" do
+    conn =
+      conn(:get, "/")
+      |> Plug.Conn.fetch_query_params
+
+    conn = TrailingFormatPlug.call(conn, @opts)
+
+    assert conn.path_info == []
+    refute conn.params["_format"]
   end
 end
