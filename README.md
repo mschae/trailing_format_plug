@@ -9,25 +9,25 @@ Add the `trailing_format_plug` dependency to your `mix.exs` as follows:
 ```elixir
 def deps do
   #  ...
-  {:trailing_format_plug, "~> 0.0.4"}
+  {:trailing_format_plug, "~> 0.0.5"}
   # ...
 end
 ```
 
 If you are using phoenix:
 
-Add the plug to the `:before` pipeline in your router.ex:
+Add the plug to your endpoint.ex file:
 
 ```elixir
-defmodule Djay.Router do
-  use Phoenix.Router
-
-  pipeline :before do
-    plug TrailingFormatPlug
-    plug :super
-  end
+defmodule MyProject.Endpoint do
+  # ...
+  plug TrailingFormatPlug   # add this
+  plug Plug.RequestId
+  plug Plug.Logger
+  # ...
 end
 ```
+Add the plug to the `:before` pipeline in your router.ex:
 
 ## License
 
