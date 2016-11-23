@@ -8,7 +8,7 @@ defmodule TrailingFormatPlug.Mixfile do
       elixir: ">= 1.0.0",
       deps: deps,
       package: [
-        contributors: ["Michael Schaefermeyer"],
+        maintainers: ["Michael Schaefermeyer"],
         licenses: ["Apache 2.0"],
         links: %{"Github" => "http://github.com/mschae/trailing_format_plug"}
       ],
@@ -23,7 +23,9 @@ defmodule TrailingFormatPlug.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.0.0"},
-      {:plug, "> 0.12.0"}
+      {:plug, "> 0.12.0"},
+
+      {:ex_doc, "~> 0.14.3", only: [:dev]}
     ]
   end
 
