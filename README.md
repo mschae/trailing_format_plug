@@ -27,7 +27,6 @@ defmodule MyProject.Endpoint do
   # ...
 end
 ```
-Add the plug to the `:before` pipeline in your router.ex:
 
 ## License
 
