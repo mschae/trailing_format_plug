@@ -1,9 +1,12 @@
 defmodule TrailingFormatPlug do
   @moduledoc """
-  Allows you to define urls with format
-  extension.
+  Allows you to define urls like
 
-  /foo/:bar.json
+  /foo/:bar
+
+  and receive paths like
+
+  /foo/whatever.json
 
   - You can define a route whitelist in your 
     `config.exs`
@@ -27,12 +30,13 @@ defmodule TrailingFormatPlug do
   plug :match
   plug :dispatch
 
-  # Gets routes from environment config
-  # If there's n
   @urls Application.get_env(:trailing_format_plug, :routes) || 
     :no_routes
 
   case @urls do
+    # There are configured routes:
+    # take the format just for those
+    # routes.
     [_ | _] -> Enum.map(@urls, &(
         match &1 do
           conn |> TrailingFormatPlug.add_format       
@@ -42,7 +46,8 @@ defmodule TrailingFormatPlug do
       match _ do
         conn
       end
-
+    # There are no configured routes: take
+    # the format always.
     :no_routes -> 
       match _ do
         case conn do
