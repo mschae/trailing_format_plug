@@ -25,7 +25,7 @@ defmodule TrailingFormatPlug.Mixfile do
       {:cowboy, "~> 1.0.0"},
       {:plug, "> 0.12.0"},
 
-      {:ex_doc, "~> 0.14.3", only: [:dev]}
+      {:ex_doc, "~> 0.14.3", only: [:dev]},
     ]
   end
 
