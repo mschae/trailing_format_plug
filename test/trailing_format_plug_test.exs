@@ -6,7 +6,6 @@ defmodule TrailingFormatPlugTest do
 
   test "plug removes trailing format" do
     conn = conn(:get, "/foo/bar.json")
-
     conn = TrailingFormatPlug.call(conn, @opts)
 
     assert conn.path_info == ["foo", "bar"]
