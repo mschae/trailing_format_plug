@@ -2,7 +2,15 @@ defmodule TrailingFormatPlugTest do
   use ExUnit.Case, async: true
   use Plug.Test
 
-  @opts TrailingFormatPlug.init([])
+  @opts TrailingFormatPlug.init(["json"])
+
+  test "plug ignores formats that are not passed as options" do
+    conn = conn(:get, "/foo/bar.html")
+
+    conn = TrailingFormatPlug.call(conn, @opts)
+
+    assert conn.path_info == ["foo", "bar.html"]
+  end
 
   test "plug removes trailing format" do
     conn = conn(:get, "/foo/bar.json")

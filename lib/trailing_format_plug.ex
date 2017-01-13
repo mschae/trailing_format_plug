@@ -4,17 +4,21 @@ defmodule TrailingFormatPlug do
   def init(options), do: options
 
   def call(%{path_info: []} = conn, _opts), do: conn
-  def call(conn, _opts) do
+  def call(conn, opts) do
     conn.path_info |> List.last |> String.split(".") |> Enum.reverse |> case do
       [ _ ] -> conn
       [ format | fragments ] ->
-        new_path       = fragments |> Enum.reverse |> Enum.join(".")
-        path_fragments = List.replace_at conn.path_info, -1, new_path
-        params         =
-          Plug.Conn.fetch_query_params(conn).params
-          |> update_params(new_path, format)
-          |> Dict.put("_format", format)
-        %{conn | path_info: path_fragments, query_params: params, params: params}
+        opts |> Enum.member?(format) |> case do
+          true ->
+            new_path       = fragments |> Enum.reverse |> Enum.join(".")
+            path_fragments = List.replace_at conn.path_info, -1, new_path
+            params         =
+              Plug.Conn.fetch_query_params(conn).params
+              |> update_params(new_path, format)
+              |> Dict.put("_format", format)
+            %{conn | path_info: path_fragments, query_params: params, params: params}
+          false -> conn
+        end
     end
   end
 
