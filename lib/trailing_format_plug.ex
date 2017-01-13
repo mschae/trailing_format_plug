@@ -13,6 +13,7 @@ defmodule TrailingFormatPlug do
         params         =
           Plug.Conn.fetch_query_params(conn).params
           |> Dict.put("_format", format)
+          |> Dict.put(new_path, new_path)
         %{conn | path_info: path_fragments, query_params: params, params: params}
     end
   end
