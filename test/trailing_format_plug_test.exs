@@ -26,8 +26,20 @@ defmodule TrailingFormatPlugTest do
       |> Plug.Conn.fetch_query_params
 
     conn = TrailingFormatPlug.call(conn, @opts)
-
     assert conn.params["_format"] == "json"
+  end
+
+  test "plug removes .json from param" do
+    params = Map.put(%{}, "sport", "hockey.json")
+
+    conn =
+      conn(:get, "/api/hockey.json")
+      |> Plug.Conn.fetch_query_params
+      |> Map.put(:params, params)
+
+    conn = TrailingFormatPlug.call(conn, @opts)
+    assert conn.params["_format"] == "json"
+    assert conn.params["sport"] == "hockey"
   end
 
   test "plug supports empty path_info" do
