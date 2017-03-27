@@ -6,23 +6,22 @@ defmodule TrailingFormatPlug.Mixfile do
       app: :trailing_format_plug,
       version: "0.0.6",
       elixir: ">= 1.0.0",
-      deps: deps,
+      deps: deps(),
       package: [
         maintainers: ["Michael Schaefermeyer"],
         licenses: ["Apache 2.0"],
         links: %{"Github" => "http://github.com/mschae/trailing_format_plug"}
       ],
-      description: description
+      description: description()
      ]
   end
 
   def application do
-    [applications: [:logger, :cowboy]]
+    [applications: [:logger]]
   end
 
   defp deps do
     [
-      {:cowboy, "~> 1.0.0"},
       {:plug, "> 0.12.0"},
 
       {:ex_doc, "~> 0.14.3", only: [:dev]}

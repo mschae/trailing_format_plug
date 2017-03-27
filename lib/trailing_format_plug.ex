@@ -5,14 +5,14 @@ defmodule TrailingFormatPlug do
 
   def call(%{path_info: []} = conn, _opts), do: conn
   def call(conn, _opts) do
-    path = conn.path_info |> List.last |> String.split(".") |> Enum.reverse
+    path = conn.path_info |> List.last() |> String.split(".") |> Enum.reverse()
 
     case path do
       [ _ ] ->
         conn
 
       [ format | fragments ] ->
-        new_path       = fragments |> Enum.reverse |> Enum.join(".")
+        new_path       = fragments |> Enum.reverse() |> Enum.join(".")
         path_fragments = List.replace_at conn.path_info, -1, new_path
         params         =
           Plug.Conn.fetch_query_params(conn).params
