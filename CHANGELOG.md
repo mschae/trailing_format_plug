@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.7
+* Enhancements
+  * Remove cowboy dependency
+  * Fix Elixir 1.4 warnings
+
 ## v0.0.6
 
 * Enhancements
